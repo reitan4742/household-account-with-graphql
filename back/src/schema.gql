@@ -1,0 +1,64 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateIncomeInput {
+  date: String!
+  name: String!
+  value: Float!
+}
+
+input CreatePurchaseInput {
+  date: String!
+  name: String!
+  value: Float!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Income {
+  date: DateTime!
+  id: Float!
+  name: String!
+  value: Float!
+}
+
+type Mutation {
+  createIncome(createIncomeInput: CreateIncomeInput!): Income!
+  createPurchase(createPurchaseInput: CreatePurchaseInput!): Purchase!
+  removeIncome(id: Int!): Income!
+  removePurchase(id: Int!): Purchase!
+  updateIncome(updateIncomeInput: UpdateIncomeInput!): Income!
+  updatePurchase(updatePurchaseInput: UpdatePurchaseInput!): Purchase!
+}
+
+type Purchase {
+  date: DateTime!
+  id: Float!
+  name: String!
+  value: Float!
+}
+
+type Query {
+  income(id: Int!): Income!
+  incomes(month: Int, orderBy: String!, year: Int): [Income!]!
+  purchase(id: Int!): Purchase!
+  purchases(month: Int, orderBy: String!, year: Int): [Purchase!]!
+}
+
+input UpdateIncomeInput {
+  date: String
+  id: Int!
+  name: String
+  value: Float
+}
+
+input UpdatePurchaseInput {
+  date: String
+  id: Int!
+  name: String
+  value: Float
+}
